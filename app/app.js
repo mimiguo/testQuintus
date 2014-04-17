@@ -38,7 +38,7 @@ $(document).ready(function(){
 		
 	});
 	
-	Q.load(['smurf_sprite.png'], function(){
+	Q.load(['smurf_sprite.png','sprites.json'], function(){
 		//not working
 		Q.stageScene('scene1');
 		Q.debug=true;
