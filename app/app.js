@@ -7,7 +7,8 @@ $(document).ready(function(){
 	
 	Q.Sprite.extend("Player", {
 		init: function(p) {
-			this._super(p, {asset: 'smurf_sprite.png'});
+			//this._super(p, {asset: 'smurf_sprite.png'});
+			this._super({asset: 'smurf_sprite.png',x:10});
 		}
 	});
 	
