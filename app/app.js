@@ -2,7 +2,7 @@ $(document).ready(function(){
  console.log('start');
 	//error:Uncaught TypeError: Cannot read property 'appendChild' of null
 	//var Q = window.Q = Quintus().include("Sprites, Scenes, Input").setup("canvas").controls(true).touch();
-	var Q = Quintus().include('Sprites, Scenes, Input');
+	var Q = Quintus().include('Sprites, Scenes, 2D, Input');
 	Q.setup("canvas");
 	
 	Q.Sprite.extend("Player", {
@@ -19,7 +19,23 @@ $(document).ready(function(){
 	Q.scene('scene1', function(stage){
 		console.log('scene1');
 		var player1= stage.insert(new Q.Player());
-		console.log('x:',player1.p.x);
+		
+		Q.input.on('up',stage,function(e) { 
+			console.log('up');
+		});
+
+		Q.input.on('down',stage,function(e) { 
+			console.log('down');
+		});
+
+		Q.input.on('left',stage,function(e) {
+		  console.log('left');
+		});
+
+		Q.input.on('right',stage,function(e) {
+		  console.log('right');
+		});
+		
 	});
 	
 	Q.load(['smurf_sprite.png'], function(){
@@ -35,5 +51,7 @@ $(document).ready(function(){
 			//ppl.update(dt);
 			//ppl.render(Q.ctx);
 		//});
+		
+		Q.input.keyboardControls();
 	});
 });
