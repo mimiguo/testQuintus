@@ -2,10 +2,8 @@
  * ...
  * @author gabe
  */
-
-(function() {
-	
-	console.log('start');
+$(document).ready(function(){
+  console.log('start');
 	//error:Uncaught TypeError: Cannot read property 'appendChild' of null
 	var Q = Quintus().include('Sprites, Scenes, Input').setup("canvas").controls().touch();
 	//var Q = Quintus().include('Sprites, Scenes, Input');
@@ -27,5 +25,4 @@
 	Q.load('smurf_sprite.png', function(){
 		Q.stageScene('scene1');
 	});
-	
-})();
+});
