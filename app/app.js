@@ -17,7 +17,7 @@ $(document).ready(function(){
 	//Q.sheet('Player','smurf_sprite.png',{tilew:128, tileh:128});
 	
 	Q.scene('scene1', function(stage){
-		alert('test');
+		console.log('scene1');
 		var player1= stage.insert(new Q.Player());
 		console.log('x:',player1.p.x);
 	});
