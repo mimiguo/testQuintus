@@ -1,6 +1,5 @@
-window.addEventListener("load", function(){
-	
-	 console.log('start');
+$(document).ready(function(){
+ console.log('start');
 	//error:Uncaught TypeError: Cannot read property 'appendChild' of null
 	//var Q = window.Q = Quintus().include("Sprites, Scenes, Input").setup("canvas").controls(true).touch();
 	var Q = Quintus().include('Sprites, Scenes, Input');
@@ -8,7 +7,7 @@ window.addEventListener("load", function(){
 	
 	Q.Sprite.extend("Player", {
 		init: function(p) {
-			this._super(p, {asset: 'smurf_sprite.png', x:5, y:1});
+			this._super(p, {asset: 'smurf_sprite.png'});
 		}
 	});
 	
@@ -19,6 +18,7 @@ window.addEventListener("load", function(){
 	});*/
 	
 	Q.load('smurf_sprite.png', function(){
+		//not working
 		//Q.stageScene('scene1');
 		
 		var ppl = new Q.Player();
