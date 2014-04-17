@@ -8,8 +8,8 @@ $(document).ready(function(){
 	Q.Sprite.extend("Player", {
 		init: function(p) {
 			//this._super(p, {asset: 'smurf_sprite.png'});
-			this._super({asset: 'smurf_sprite.png',x:10});
-			//this._super(p,{sheet:'player', frame:7});
+			//this._super({asset: 'smurf_sprite.png',x:10});
+			this._super({sheet:'player', frame:7});
 			//this._super(p,{sheet:'player', frame:7});
 		}
 	});
@@ -42,7 +42,7 @@ $(document).ready(function(){
 		//not working
 		Q.stageScene('scene1');
 		Q.debug=true;
-		//Q.compileSheets('smurf_sprite.png','sprites.json');
+		Q.compileSheets('smurf_sprite.png','sprites.json');
 		
 		
 		//var ppl = new Q.Player();
