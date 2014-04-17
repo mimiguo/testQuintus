@@ -2,7 +2,7 @@ $(document).ready(function(){
  console.log('start');
 	//error:Uncaught TypeError: Cannot read property 'appendChild' of null
 	//var Q = window.Q = Quintus().include("Sprites, Scenes, Input").setup("canvas").controls(true).touch();
-	var Q = Quintus().include('Sprites, Scenes, 2D, Input');
+	var Q = Quintus().include('Sprites, Scenes, 2D, Input, Anim, Touch, UI, TMX, Audio');
 	Q.setup("canvas");
 	
 	Q.Sprite.extend("Player", {
