@@ -14,7 +14,7 @@ $(document).ready(function(){
 		init: function(p) {
 			//this._super(p, {asset: 'smurf_sprite.png'});
 			//this._super({asset: 'smurf_sprite.png',x:10});
-			this._super({sprite: "player", sheet:'player',x:'400',y:'300'});
+			this._super({sprite: "player", sheet:'player',x:'100',y:'100',frame:'3'});
 			//this._super(p,{sheet:'player', frame:7});
 			this.add("animation");
 		}
@@ -70,9 +70,9 @@ $(document).ready(function(){
 		
 	});
 	
-	Q.load(['smurf_sprite.png','sprites.json','player.png','greenman.json'], function(){
+	Q.load(['smurf_sprite.png','sprites.json','player.png','greenman.json','spritesA.json'], function(){
 		
-		Q.compileSheets('smurf_sprite.png','sprites.json');
+		Q.compileSheets('smurf_sprite.png','spritesA.json');
 		Q.compileSheets('player.png','greenman.json');
 		Q.stageScene('scene1');
 		Q.debug=true;
