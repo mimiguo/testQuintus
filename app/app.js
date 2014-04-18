@@ -3,22 +3,33 @@ $(document).ready(function(){
 	//error:Uncaught TypeError: Cannot read property 'appendChild' of null
 	//var Q = window.Q = Quintus().include("Sprites, Scenes, Input").setup("canvas").controls(true).touch();
 	var Q = Quintus().include('Sprites, Scenes, 2D, Input, Anim, Touch, UI, TMX, Audio');
+	
+	//Q.setup();
 	Q.setup("canvas");
 	
 	Q.Sprite.extend("Player", {
 		init: function(p) {
 			//this._super(p, {asset: 'smurf_sprite.png'});
 			//this._super({asset: 'smurf_sprite.png',x:10});
-			this._super({sheet:'player', frame:7});
+			this._super({sprite: "player", sheet:'player'});
 			//this._super(p,{sheet:'player', frame:7});
+			this.add("animation");
 		}
 	});
 	
-	//Q.sheet('Player','smurf_sprite.png',{tilew:128, tileh:128});
+	Q.animations('player', {
+		step_left:{ frames:[0,1,2,3,1], rate: 1/10}
+	});
 	
 	Q.scene('scene1', function(stage){
-		console.log('scene1');
+		//console.log('scene1');
+		console.log(Q.stage().scene.name);
 		var player1= stage.insert(new Q.Player());
+		//player1.play('step_left');
+		//var player2= stage.insert(new Q.Player());
+		//player2.x=250;
+		//player2.y=250;
+		////Q.sheet('player').draw(ctx, 0,0, 0);
 		
 		Q.input.on('up',stage,function(e) { 
 			console.log('up');
@@ -55,4 +66,5 @@ $(document).ready(function(){
 		
 		Q.input.keyboardControls();
 	});
+	
 });
