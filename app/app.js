@@ -39,10 +39,11 @@ $(document).ready(function(){
 	});
 	
 	Q.load(['smurf_sprite.png','sprites.json'], function(){
-		//not working
+		
+		Q.compileSheets('smurf_sprite.png','sprites.json');
 		Q.stageScene('scene1');
 		Q.debug=true;
-		Q.compileSheets('smurf_sprite.png','sprites.json');
+		
 		
 		
 		//var ppl = new Q.Player();
