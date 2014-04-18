@@ -1,1 +1,1 @@
-{"player": {"tilew": 128,"tileh": 128,"sx": 0,"sy": 0,"w": 512,"h": 512}}
+{"player": {"tilew": 200,"tileh": 250,"cols":4,"rows":4,"spacingX":50,"spacingY":2,"sx": -80,"sy": -120,"w": 455,"h": 504}}
