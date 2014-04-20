@@ -14,9 +14,12 @@ $(document).ready(function(){
 		init: function(p) {
 			//this._super(p, {asset: 'smurf_sprite.png'});
 			//this._super({asset: 'smurf_sprite.png',x:10});
-			this._super({sprite: "player", sheet:'player',x:'100',y:'100',frame:'3'});
+			//this._super({sprite: "player", sheet:'player',x:'100',y:'100',frame:'3'});
+			this._super(p, {sprite: "player", sheet:'player',frame:'3'});
 			//this._super(p,{sheet:'player', frame:7});
 			this.add("animation");
+			//this.add("platformerControls, 2d");
+			//this.add("2d");
 		}
 	});
 	
@@ -28,7 +31,7 @@ $(document).ready(function(){
 		init: function(p) {
 			//this._super(p, {asset: 'smurf_sprite.png'});
 			//this._super({asset: 'smurf_sprite.png',x:10});
-			this._super({sprite: "greenman", sheet:'greenman',x:'400',y:'300'});
+			this._super(p, {sprite: "greenman", sheet:'greenman',x:Q.width/2,y:Q.height/2});
 			//this._super(p,{sheet:'player', frame:7});
 			this.add("animation");
 		}
@@ -38,7 +41,8 @@ $(document).ready(function(){
 	Q.scene('scene1', function(stage){
 		//console.log('scene1');
 		console.log(Q.stage().scene.name);
-		var player1= stage.insert(new Q.Player());
+		var player1= stage.insert(new Q.Player({x:200,y:200}));
+		//console.dir(player1);
 		//player1.play('step_left');
 		//var player2= stage.insert(new Q.Player());
 		//player2.x=250;
