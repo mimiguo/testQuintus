@@ -42,6 +42,11 @@ $(document).ready(function(){
 		//console.log('scene1');
 		console.log(Q.stage().scene.name);
 		var player1= stage.insert(new Q.Player({x:200,y:200}));
+		stage.insert(new Q.Player({x:250,y:250, frame:2}));
+		stage.insert(new Q.Player({x:300,y:300, frame:3}));
+		stage.insert(new Q.Player({x:350,y:350, frame:4}));
+		stage.insert(new Q.Player({x:400,y:400, frame:5}));
+		stage.insert(new Q.Player({x:450,y:450, frame:6}));
 		//console.dir(player1);
 		//player1.play('step_left');
 		//var player2= stage.insert(new Q.Player());
