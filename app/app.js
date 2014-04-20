@@ -20,10 +20,6 @@ $(document).ready(function(){
 		}
 	});
 	
-	
-	
-	
-	
 	Q.animations('greenman', {
 		step_left:{ frames:[0,1,2,3,1], rate: 1/10}
 	});
