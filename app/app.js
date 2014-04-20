@@ -8,14 +8,14 @@ $(document).ready(function(){
 	Q.setup("canvas");
 	
 	Q.animations('player', {
-		step_left:{ frames:[0,1,2,3,1], rate: 1/10}
+		step_left:{ frames:[0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15], rate: 1/10}
 	});
 	Q.Sprite.extend("Player", {
 		init: function(p) {
 			//this._super(p, {asset: 'smurf_sprite.png'});
 			//this._super({asset: 'smurf_sprite.png',x:10});
 			//this._super({sprite: "player", sheet:'player',x:'100',y:'100',frame:'3'});
-			this._super(p, {sprite: "player", sheet:'player',frame:'3'});
+			this._super(p, {sprite: "player", sheet:'player',frame:'0'});
 			//this._super(p,{sheet:'player', frame:7});
 			this.add("animation");
 			//this.add("platformerControls, 2d");
@@ -48,7 +48,7 @@ $(document).ready(function(){
 		stage.insert(new Q.Player({x:400,y:400, frame:5}));
 		stage.insert(new Q.Player({x:450,y:450, frame:6}));
 		//console.dir(player1);
-		//player1.play('step_left');
+		player1.play('step_left');
 		//var player2= stage.insert(new Q.Player());
 		//player2.x=250;
 		//player2.y=250;
