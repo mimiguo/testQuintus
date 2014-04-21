@@ -88,8 +88,9 @@ $(document).ready(function(){
 		Q.input.on('right',stage,function(e) {
 		  player1.p.x+=5;
 		});
-		
-		Q.audio.play('01-ace-combat-6-main-theme.mp3');
+		//stage.add("viewport").follow(player1,{x:true,y:false});
+		stage.add("viewport").follow(player1);
+		//Q.audio.play('01-ace-combat-6-main-theme.mp3');
 	});
 	
 	Q.load(['smurf_sprite.png','sprites.json','player.png','greenman.json','spritesA.json','01-ace-combat-6-main-theme.mp3'], function(){
