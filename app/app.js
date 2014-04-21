@@ -42,11 +42,19 @@ $(document).ready(function(){
 		//console.log('scene1');
 		console.log(Q.stage().scene.name);
 		var player1= stage.insert(new Q.Player({x:200,y:200}));
+		
+		for(var i=0;i<16;i++){
+			
+			stage.insert(new Q.Player({x:0+i*50,y:400, frame:i}));
+		}
+		
+		/*
 		stage.insert(new Q.Player({x:250,y:250, frame:2}));
 		stage.insert(new Q.Player({x:300,y:300, frame:3}));
 		stage.insert(new Q.Player({x:350,y:350, frame:4}));
 		stage.insert(new Q.Player({x:400,y:400, frame:5}));
 		stage.insert(new Q.Player({x:450,y:450, frame:6}));
+		*/
 		//console.dir(player1);
 		player1.play('step_left');
 		//var player2= stage.insert(new Q.Player());
@@ -58,19 +66,20 @@ $(document).ready(function(){
 		gm.play('step_left');
 		
 		Q.input.on('up',stage,function(e) { 
-			console.log('up');
+			player1.p.y-=5;			
 		});
 
 		Q.input.on('down',stage,function(e) { 
-			console.log('down');
+			player1.p.y+=5;
 		});
 
 		Q.input.on('left',stage,function(e) {
-		  console.log('left');
+		  player1.p.x-=5;
+		  
 		});
 
 		Q.input.on('right',stage,function(e) {
-		  console.log('right');
+		  player1.p.x+=5;
 		});
 		
 	});
@@ -80,9 +89,7 @@ $(document).ready(function(){
 		Q.compileSheets('smurf_sprite.png','spritesA.json');
 		Q.compileSheets('player.png','greenman.json');
 		Q.stageScene('scene1');
-		Q.debug=true;
-		
-		
+		//Q.debug=true;
 		
 		//var ppl = new Q.Player();
 		//Q.gameLoop( function(dt){
