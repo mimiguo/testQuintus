@@ -44,8 +44,7 @@ $(document).ready(function(){
 		var player1= stage.insert(new Q.Player({x:200,y:200}));
 		
 		for(var i=0;i<16;i++){
-			
-			stage.insert(new Q.Player({x:0+i*50,y:400, frame:i}));
+			stage.insert(new Q.Player({x:15+i*50,y:400, frame:i}));
 		}
 		
 		/*
@@ -55,12 +54,11 @@ $(document).ready(function(){
 		stage.insert(new Q.Player({x:400,y:400, frame:5}));
 		stage.insert(new Q.Player({x:450,y:450, frame:6}));
 		*/
+		
 		//console.dir(player1);
 		player1.play('step_left');
-		//var player2= stage.insert(new Q.Player());
-		//player2.x=250;
-		//player2.y=250;
-		////Q.sheet('player').draw(ctx, 0,0, 0);
+		
+		//Q.sheet('player').draw(ctx, 0,0, 0);
 		
 		var gm = stage.insert(new Q.GreenMan());
 		gm.play('step_left');
@@ -75,7 +73,7 @@ $(document).ready(function(){
 
 		Q.input.on('left',stage,function(e) {
 		  player1.p.x-=5;
-		  
+		  //player1.p.scale=-1;
 		});
 
 		Q.input.on('right',stage,function(e) {
@@ -92,13 +90,13 @@ $(document).ready(function(){
 		//Q.debug=true;
 		
 		//var ppl = new Q.Player();
-		//Q.gameLoop( function(dt){
+		Q.gameLoop( function(dt){
+			console.log('dt:', dt);
 			//Q.clear();
 			//ppl.update(dt);
 			//ppl.render(Q.ctx);
-		//});
+		});
 		
 		Q.input.keyboardControls();
 	});
-	
 });
