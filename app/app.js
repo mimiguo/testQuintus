@@ -3,12 +3,12 @@ $(document).ready(function(){
 	//error:Uncaught TypeError: Cannot read property 'appendChild' of null
 	//var Q = window.Q = Quintus().include("Sprites, Scenes, Input").setup("canvas").controls(true).touch();
 	var Q = Quintus().include('Sprites, Scenes, 2D, Input, Anim, Touch, UI, TMX, Audio');
-	
-	//Q.setup();
+	Q.enableSound();
 	Q.setup("canvas");
 	
 	Q.animations('player', {
-		step_left:{ frames:[0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15], rate: 1/10}
+		step_left:{ frames:[0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15], rate: 1/10},
+		step_reverse: {frames:[15,14,13,12,11,10,9,8,7,6,5,4,3,2,1,0], next:'step_left', rate: 1/15}
 	});
 	Q.Sprite.extend("Player", {
 		init: function(p) {
@@ -34,6 +34,13 @@ $(document).ready(function(){
 			this._super(p, {sprite: "greenman", sheet:'greenman',x:Q.width/2,y:Q.height/2});
 			//this._super(p,{sheet:'player', frame:7});
 			this.add("animation");
+			this.add("tween");
+			Q.input.on('up', this, 'moveUp');
+		},
+		moveUp: function() {
+			
+			//this.p.y-=5;
+			this.animate({y:this.p.y-=50, easing:Q.Easing.Quadratic.InOut, duration:3});
 		}
 	});
 	
@@ -57,6 +64,7 @@ $(document).ready(function(){
 		
 		//console.dir(player1);
 		player1.play('step_left');
+		//player1.play('step_reverse');
 		
 		//Q.sheet('player').draw(ctx, 0,0, 0);
 		
@@ -73,6 +81,7 @@ $(document).ready(function(){
 
 		Q.input.on('left',stage,function(e) {
 		  player1.p.x-=5;
+		  //player1.play('step_reverse');
 		  //player1.p.scale=-1;
 		});
 
@@ -80,9 +89,10 @@ $(document).ready(function(){
 		  player1.p.x+=5;
 		});
 		
+		Q.audio.play('01-ace-combat-6-main-theme.mp3');
 	});
 	
-	Q.load(['smurf_sprite.png','sprites.json','player.png','greenman.json','spritesA.json'], function(){
+	Q.load(['smurf_sprite.png','sprites.json','player.png','greenman.json','spritesA.json','01-ace-combat-6-main-theme.mp3'], function(){
 		
 		Q.compileSheets('smurf_sprite.png','spritesA.json');
 		Q.compileSheets('player.png','greenman.json');
@@ -90,12 +100,12 @@ $(document).ready(function(){
 		//Q.debug=true;
 		
 		//var ppl = new Q.Player();
-		Q.gameLoop( function(dt){
-			console.log('dt:', dt);
-			//Q.clear();
+		//Q.gameLoop( function(dt){
+			//console.log('dt:', dt);
+			////Q.clear();
 			//ppl.update(dt);
 			//ppl.render(Q.ctx);
-		});
+		//});
 		
 		Q.input.keyboardControls();
 	});
