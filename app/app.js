@@ -10,6 +10,7 @@ $(document).ready(function(){
 		step_left:{ frames:[0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15], rate: 1/10},
 		step_reverse: {frames:[15,14,13,12,11,10,9,8,7,6,5,4,3,2,1,0], next:'step_left', rate: 1/15}
 	});
+	
 	Q.Sprite.extend("Player", {
 		init: function(p) {
 			//this._super(p, {asset: 'smurf_sprite.png'});
@@ -49,10 +50,15 @@ $(document).ready(function(){
 		}
 	});
 	
-	
 	Q.scene('scene1', function(stage){
 		//console.log('scene1');
 		console.log(Q.stage().scene.name);
+		
+		var map = {dataAsset:'map.tmx', layerIndex:0, sheet:'tiles', tileW:70, tileH:70, type: Q.SPRITE_NONE};
+		var bg = new Q.TileLayer(map);
+		stage.insert(bg);
+		//stage.collisionLayer(new Q.TileLayer(map));
+		
 		var player1= stage.insert(new Q.Player({x:200,y:200}));
 		
 		for(var i=0;i<16;i++){
@@ -94,15 +100,21 @@ $(document).ready(function(){
 		Q.input.on('right',stage,function(e) {
 		  player1.p.x+=5;
 		});
+		
+		Q.input.on('fire',stage,function(e) {
+		  Q.audio.play('01-ace-combat-6-main-theme.mp3');
+		});
+		
 		//stage.add("viewport").follow(player1,{x:true,y:false});
 		stage.add("viewport").follow(player1);
-		//Q.audio.play('01-ace-combat-6-main-theme.mp3');
 	});
 	
-	Q.load(['smurf_sprite.png','sprites.json','player.png','greenman.json','spritesA.json','01-ace-combat-6-main-theme.mp3'], function(){
+	Q.load(['smurf_sprite.png','sprites.json','player.png','greenman.json','spritesA.json','01-ace-combat-6-main-theme.mp3','map.tmx','tiles.png'], function(){
 		
 		Q.compileSheets('smurf_sprite.png','spritesA.json');
 		Q.compileSheets('player.png','greenman.json');
+		Q.sheet("tiles","tiles.png",{tilew:70, tileh:70});
+		
 		Q.stageScene('scene1');
 		//Q.debug=true;
 		
