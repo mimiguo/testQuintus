@@ -1,7 +1,5 @@
 $(document).ready(function(){
  console.log('start');
-	//error:Uncaught TypeError: Cannot read property 'appendChild' of null
-	//var Q = window.Q = Quintus().include("Sprites, Scenes, Input").setup("canvas").controls(true).touch();
 	var Q = Quintus().include('Sprites, Scenes, 2D, Input, Anim, Touch, UI, TMX, Audio');
 	Q.enableSound();
 	Q.setup("canvas");
@@ -13,11 +11,7 @@ $(document).ready(function(){
 	
 	Q.Sprite.extend("Player", {
 		init: function(p) {
-			//this._super(p, {asset: 'smurf_sprite.png'});
-			//this._super({asset: 'smurf_sprite.png',x:10});
-			//this._super({sprite: "player", sheet:'player',x:'100',y:'100',frame:'3'});
 			this._super(p, {sprite: "player", sheet:'player',frame:'0'});
-			//this._super(p,{sheet:'player', frame:7});
 			this.add("animation");
 			//this.add("platformerControls, 2d");
 		}
@@ -29,17 +23,12 @@ $(document).ready(function(){
 	
 	Q.Sprite.extend("GreenMan", {
 		init: function(p) {
-			//this._super(p, {asset: 'smurf_sprite.png'});
-			//this._super({asset: 'smurf_sprite.png',x:10});
 			this._super(p, {sprite: "greenman", sheet:'greenman',x:Q.width/2,y:Q.height/2});
-			//this._super(p,{sheet:'player', frame:7});
 			this.add("animation");
-			//this.add("tween");
 			this.add("2d");
 			Q.input.on('up', this, 'jumpUp');
 		},
 		moveUp: function() {
-			
 			//this.p.y-=5;
 			//not work very well
 			this.animate({y:this.p.y-=50, easing:Q.Easing.Quadratic.InOut, duration:3});
@@ -54,9 +43,9 @@ $(document).ready(function(){
 		//console.log('scene1');
 		console.log(Q.stage().scene.name);
 		
-		var map = {dataAsset:'map.tmx', layerIndex:0, sheet:'tiles', tileW:70, tileH:70, type: Q.SPRITE_NONE};
-		var bg = new Q.TileLayer(map);
-		stage.insert(bg);
+		//var map = {dataAsset:'map.tmx', layerIndex:0, sheet:'tiles', tileW:70, tileH:70, type: Q.SPRITE_NONE};
+		var bg = new Q.TileLayer({dataAsset:'map.tmx', layerIndex:0, sheet:'tiles', tileW:70, tileH:70, type: Q.SPRITE_NONE});
+		//stage.insert(bg);
 		//stage.collisionLayer(new Q.TileLayer(map));
 		
 		var player1= stage.insert(new Q.Player({x:200,y:200}));
@@ -65,26 +54,14 @@ $(document).ready(function(){
 			stage.insert(new Q.Player({x:15+i*50,y:400, frame:i}));
 		}
 		
-		/*
-		stage.insert(new Q.Player({x:250,y:250, frame:2}));
-		stage.insert(new Q.Player({x:300,y:300, frame:3}));
-		stage.insert(new Q.Player({x:350,y:350, frame:4}));
-		stage.insert(new Q.Player({x:400,y:400, frame:5}));
-		stage.insert(new Q.Player({x:450,y:450, frame:6}));
-		*/
-		
-		//console.dir(player1);
 		player1.play('step_left');
 		//player1.play('step_reverse');
-		
-		//Q.sheet('player').draw(ctx, 0,0, 0);
 		
 		var gm = stage.insert(new Q.GreenMan());
 		gm.play('step_left');
 		
 		Q.input.on('up',stage,function(e) { 
 			player1.p.y-=5;
-			
 		});
 
 		Q.input.on('down',stage,function(e) { 
@@ -93,8 +70,6 @@ $(document).ready(function(){
 
 		Q.input.on('left',stage,function(e) {
 		  player1.p.x-=5;
-		  //player1.play('step_reverse');
-		  //player1.p.scale=-1;
 		});
 
 		Q.input.on('right',stage,function(e) {
@@ -117,14 +92,6 @@ $(document).ready(function(){
 		
 		Q.stageScene('scene1');
 		//Q.debug=true;
-		
-		//var ppl = new Q.Player();
-		//Q.gameLoop( function(dt){
-			//console.log('dt:', dt);
-			////Q.clear();
-			//ppl.update(dt);
-			//ppl.render(Q.ctx);
-		//});
 		
 		Q.input.keyboardControls();
 	});
