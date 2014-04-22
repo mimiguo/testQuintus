@@ -11,7 +11,7 @@ $(document).ready(function(){
 	
 	Q.Sprite.extend("Player", {
 		init: function(p) {
-			this._super(p, {sprite: "player", sheet:'player',frame:'0'});
+			this._super(p, {sprite: "player", sheet:'player',frame:'0',collisionMask: Q.SPRITE_DEFAULT});
 			this.add("animation");
 			//this.add("platformerControls, 2d");
 		}
@@ -23,9 +23,9 @@ $(document).ready(function(){
 	
 	Q.Sprite.extend("GreenMan", {
 		init: function(p) {
-			this._super(p, {sprite: "greenman", sheet:'greenman',x:Q.width/2+100, y:0});
+			this._super(p, {sprite: "greenman", sheet:'greenman',x:Q.width/2, y:0});
 			this.add("animation");
-			this.add("2d");
+			this.add("2d, platformerControls");
 			Q.input.on('up', this, 'jumpUp');
 		},
 		moveUp: function() {
@@ -42,7 +42,7 @@ $(document).ready(function(){
 	Q.scene('scene1', function(stage){
 		//console.log('scene1');
 		console.log(Q.stage().scene.name);
-		Q.stageTMX('map.tmx', stage);
+		//Q.stageTMX('map.tmx', stage);
 		
 		var player1= stage.insert(new Q.Player({x:200,y:200}));
 		
@@ -77,7 +77,7 @@ $(document).ready(function(){
 		});
 		
 		//stage.add("viewport").follow(player1,{x:true,y:false});
-		stage.add("viewport").follow(player1);
+		stage.add("viewport").follow(gm);
 	});
 	
 	Q.load(['smurf_sprite.png','sprites.json','player.png','greenman.json','spritesA.json','01-ace-combat-6-main-theme.mp3','map.tmx','tiles.png'], function(){
@@ -90,5 +90,14 @@ $(document).ready(function(){
 		//Q.debug=true;
 		
 		Q.input.keyboardControls();
-	});
+	},{
+	progressCallback: function(loaded,total) {
+    var element = $("loading_progress");
+    //element.style.width = Math.floor(loaded/total*100) + "%";
+    if (loaded == total) {
+      //document.getElementById("loading").remove();
+	  element.remove();
+    }
+	}}
+	);
 });
