@@ -23,7 +23,7 @@ $(document).ready(function(){
 	
 	Q.Sprite.extend("GreenMan", {
 		init: function(p) {
-			this._super(p, {sprite: "greenman", sheet:'greenman',x:Q.width/2,y:Q.height/2});
+			this._super(p, {sprite: "greenman", sheet:'greenman',x:Q.width/2+100, y:0});
 			this.add("animation");
 			this.add("2d");
 			Q.input.on('up', this, 'jumpUp');
@@ -42,16 +42,12 @@ $(document).ready(function(){
 	Q.scene('scene1', function(stage){
 		//console.log('scene1');
 		console.log(Q.stage().scene.name);
-		
-		//var map = {dataAsset:'map.tmx', layerIndex:0, sheet:'tiles', tileW:70, tileH:70, type: Q.SPRITE_NONE};
-		var bg = new Q.TileLayer({dataAsset:'map.tmx', layerIndex:0, sheet:'tiles', tileW:70, tileH:70, type: Q.SPRITE_NONE});
-		//stage.insert(bg);
-		//stage.collisionLayer(new Q.TileLayer(map));
+		Q.stageTMX('map.tmx', stage);
 		
 		var player1= stage.insert(new Q.Player({x:200,y:200}));
 		
 		for(var i=0;i<16;i++){
-			stage.insert(new Q.Player({x:15+i*50,y:400, frame:i}));
+			stage.insert(new Q.Player({x:15+i*50,y:500, frame:i}));
 		}
 		
 		player1.play('step_left');
