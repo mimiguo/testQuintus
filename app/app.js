@@ -19,7 +19,6 @@ $(document).ready(function(){
 			//this._super(p,{sheet:'player', frame:7});
 			this.add("animation");
 			//this.add("platformerControls, 2d");
-			//this.add("2d");
 		}
 	});
 	
@@ -34,13 +33,19 @@ $(document).ready(function(){
 			this._super(p, {sprite: "greenman", sheet:'greenman',x:Q.width/2,y:Q.height/2});
 			//this._super(p,{sheet:'player', frame:7});
 			this.add("animation");
-			this.add("tween");
-			Q.input.on('up', this, 'moveUp');
+			//this.add("tween");
+			this.add("2d");
+			Q.input.on('up', this, 'jumpUp');
 		},
 		moveUp: function() {
 			
 			//this.p.y-=5;
+			//not work very well
 			this.animate({y:this.p.y-=50, easing:Q.Easing.Quadratic.InOut, duration:3});
+		},
+		jumpUp: function() {
+			// -50 is to small value to jump
+			this.p.vy = -500;
 		}
 	});
 	
@@ -72,7 +77,8 @@ $(document).ready(function(){
 		gm.play('step_left');
 		
 		Q.input.on('up',stage,function(e) { 
-			player1.p.y-=5;			
+			player1.p.y-=5;
+			
 		});
 
 		Q.input.on('down',stage,function(e) { 
