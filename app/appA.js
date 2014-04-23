@@ -7,9 +7,8 @@ $(document).ready(function(){
 		QA.stageTMX('map.tmx', stage);
 	});
 	
-	QA.load(['map.tmx','tiles.png','bg.png'], function(){
+	QA.load(['map.tmx','tiles.png'], function(){
 		QA.sheet("tiles","tiles.png",{tilew:70, tileh:70});
-		QA.sheet("bg","bg.png",{tilew:256, tileh:256});
 		QA.stageScene('scene1_A');
 	}
 	);
