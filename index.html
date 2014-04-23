@@ -4,6 +4,7 @@
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0"/>
 	<title>testQuintus</title>
+	<link rel="stylesheet" href="assets/style.css" />
 	<!--<script src="lib/underscore-min.js"></script>-->
 	<script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
 	<script src='http://cdn.html5quintus.com/v0.2.0/quintus-all.min.js'></script>
@@ -24,9 +25,14 @@
 </head>
 <body>
 	<h2>canvas here!</h2>
-	<div id="loading_progress"></div>
+	<div id='loading'>
+		<div id='loading_container'>
+		  <div id='loading_progress'><span>loading...</span></div>
+		</div>
+	</div>
+	<br>
 	<div>
-		<canvas id="canvas" width="800" height="600" style="border:1px solid #000000; background-color: rgb(92, 50, 137);"></canvas>
+		<canvas id="canvas" width="800" height="600" style="border:1px solid #000000; background-color: rgb(92, 50, 137); top: 100px;"></canvas>
 		<canvas id="canvasA" width="800" height="600" style="border:1px solid #000000;background-color: rgb(45, 139, 231);"></canvas>
 	</div>
 </body>

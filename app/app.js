@@ -11,7 +11,7 @@ $(document).ready(function(){
 	
 	Q.Sprite.extend("Player", {
 		init: function(p) {
-			this._super(p, {sprite: "player", sheet:'player',frame:'0',collisionMask: Q.SPRITE_DEFAULT});
+			this._super(p, {sprite: "player", sheet:'player',frame:'0'});
 			this.add("animation");
 			//this.add("platformerControls, 2d");
 		}
@@ -92,11 +92,10 @@ $(document).ready(function(){
 		Q.input.keyboardControls();
 	},{
 		progressCallback: function(loaded,total) {
-		var element = $("loading_progress");
-		//element.style.width = Math.floor(loaded/total*100) + "%";
-		if (loaded == total) {
-		  //document.getElementById("loading").remove();
-		  element.remove();
+		var element = document.getElementById("loading_progress");
+		element.style.width = Math.floor(loaded/total*100) + "%";
+			if (loaded == total) {
+				document.getElementById("loading").remove();
 			}
 		}
 	  }
