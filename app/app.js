@@ -80,7 +80,7 @@ $(document).ready(function(){
 		stage.add("viewport").follow(gm);
 	});
 	
-	Q.load(['smurf_sprite.png','sprites.json','player.png','greenman.json','spritesA.json','01-ace-combat-6-main-theme.mp3','map.tmx','tiles.png'], function(){
+	Q.load(['smurf_sprite.png','sprites.json','player.png','greenman.json','spritesA.json','01-ace-combat-6-main-theme.mp3','map.tmx','tiles.png','bg.png'], function(){
 		
 		Q.compileSheets('smurf_sprite.png','spritesA.json');
 		Q.compileSheets('player.png','greenman.json');
